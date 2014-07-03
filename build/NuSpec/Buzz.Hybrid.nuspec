@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Buzz.Hybrid</id>
+    <version>1.0.0</version>
+    <title>Buzz Hybrid Binaries</title>
+    <authors>Rusty Swayne</authors>
+    <owners>Mindfly Web Design Studio</owners>
+    <licenseUrl>https://bitbucket.org/mindfly/buzz/overview</licenseUrl>
+    <projectUrl>http://mindfly.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Buzz.Hybrid is paired down version of the awesome Hybrid-Framework for Umbraco developed by Jeroen Breuer and Jeavon.</description>
+    <summary>Buzz.Hybrid is paired down version of the awesome Hybrid-Framework for Umbraco developed by Jeroen Breuer and Jeavon.</summary>
+    <language>en-US</language>
+    <tags>umbraco, mindfly, buzz</tags>
+    <dependencies />
+  </metadata>
+  <files>
+    <file src="..\Temp\bin\Buzz.Hybrid.dll" target="lib\net40\Buzz.Hybrid.dll" />
+  </files>
+</package>

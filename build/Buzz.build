@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Import Project="Buzz.Version.props" />
+	<Import Project="..\tools\Buzz\Buzz.props" />
+	<Import Project="..\tools\Buzz\Buzz.targets" />
+	
+	<!-- 
+ ****************************************************
+ TARGETS 
+ *****************************************************
+ -->
+
+	<!-- BUILD INITIALIZATION -->
+	<Target Name="Build" DependsOnTargets="ZipAllBinaries;NuGetPackCore">
+
+		<Message Text="Build number is $(AssemblyInformationVersion)" Importance="high" />
+
+		<RemoveDir Directories="$(BuildBinariesFolder);$(BuildPackageFolder);" />
+		
+	</Target>
+	<!-- NUGET BUZZ.COMMON -->
+	<Target Name="NuGetPackCore" DependsOnTargets="AllBinaries">
+
+		<Message Text="Beginning NuGet Pack Buzz.Hybrid.$(AssemblyInformationVersion).nupkg" Importance="high" />
+		
+			<Exec WorkingDirectory="$(PackageDir)" Command="..\..\..\src\.nuget\NuGet.exe pack ..\..\..\build\nuspec\Buzz.Hybrid.nuspec" />
+
+        <Message Text="Finished NuGet Pack Buzz.Common.$(AssemblyInformationVersion).nupkg" Importance="high" />
+
+        <Message Text="Beginning NuGet Pack Buzz.Web.$(AssemblyInformationVersion).nupkg" Importance="high" />
+        
+            <Exec WorkingDirectory="$(PackageDir)" Command="..\..\..\src\.nuget\NuGet.exe pack ..\..\..\build\nuspec\Buzz.Web.nuspec" />
+
+		<Message Text="Finished NuGet Pack Buzz.Web
+                 .$(AssemblyInformationVersion).nupkg" Importance="high" />
+		
+	</Target>
+	
+		
+	<!-- ZIP OF ALL BINARIES -->
+	<Target Name="ZipAllBinaries" DependsOnTargets="AllBinaries">
+		
+		<Message Text="Starting to zip to $(BuildZipFileName)" Importance="high" />
+
+		<Exec WorkingDirectory="$(PackageDir)" Command="..\..\..\tools\7zip\7za.exe a -r %22$(MerchelloAllBinaries)%22 %22$(BuildBinariesFolder)*%22" />
+
+		<Message Text="Finished zipping to build\$(BuildZipFileNameBin)" Importance="high" />
+		
+	</Target>
+
+	<!-- SEPERATE OUT BUZZ BINARIES AND REMOVE TEST DLLS -->
+	<Target Name="AllBinaries" DependsOnTargets="CopyXmlDocumentation">
+		
+		<ItemGroup>
+			<PackageBinariesFiles Include="$(SolutionBinFolder)*Buzz.*" Exclude="$(SolutionBinFolder)*Tests.*;$(SolutionBinFolder)*nunit.*;$(SolutionBinFolder)*Moq.*" />
+		</ItemGroup>
+		
+		<Copy SourceFiles="@(PackageBinariesFiles)"
+				DestinationFiles="@(PackageBinariesFiles->'$(BuildBinariesFolder)\%(RecursiveDir)%(Filename)%(Extension)')"
+				OverwriteReadOnlyFiles="true"
+				SkipUnchangedFiles="false" />
+		
+	</Target>
+		
+	
+	<!-- COPY THE XML DOCUMENTATION TO THE BIN FOLDER -->
+	<Target Name="CopyXmlDocumentation"  DependsOnTargets="CompileProjects">
+		<ItemGroup>
+			<XmlDocumentationFiles Include="$(SolutionBinFolder)*.xml" />
+		</ItemGroup>
+
+		<Copy SourceFiles="@(XmlDocumentationFiles)"
+				DestinationFiles="@(XmlDocumentationFiles->'$(BuildDir)bin\%(RecursiveDir)%(Filename)%(Extension)')"
+				OverwriteReadOnlyFiles="true"
+				SkipUnchangedFiles="false" />
+		<Message Text="CopyXmlDocumentation" />
+	</Target>
+
+		<!-- UNIT TESTS -->
+		<Target Name="RunTests" DependsOnTargets="CompileProjects">
+
+            <!--Exec Command="..\tools\NUnit\nunit-console.exe .\Temp\bin\Buzz.Tests.dll  /xml=.\Temp\Artifacts\Buzz_TestResults.xml" /-->				
+				
+		</Target>
+	
+	<!-- COMPILE -->
+	<Target Name="CompileProjects" DependsOnTargets="SetVersionNumber">
+
+		<Message Text="Compiling web project to build\$(BuildDir)" Importance="high" />
+
+		<!-- TODO: RSS had to add the Platform Any CPU -->
+		<MSBuild Projects="..\src\Buzz.Hybrid.sln" Properties="WarningLevel=0;Configuration=$(BuildConfiguration);Platform=Any CPU;PipelineDependsOnBuild=False;OutDir=$(SolutionBinFolderAbsolutePath);" Targets="Clean;Build;" BuildInParallel="False" ToolsVersion="4.0" UnloadProjectsOnCompletion="False">
+		</MSBuild>
+
+		<!-- DONE -->
+		<Message Text="Finished compiling projects" Importance="high" />
+	</Target>
+
+ 
+
+</Project>
