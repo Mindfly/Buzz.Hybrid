@@ -6,8 +6,8 @@
     <title>Buzz Hybrid Binaries</title>
     <authors>Rusty Swayne</authors>
     <owners>Mindfly Web Design Studio</owners>
-    <licenseUrl>https://bitbucket.org/mindfly/buzz/overview</licenseUrl>
-    <projectUrl>http://mindfly.com</projectUrl>
+    <licenseUrl>https://github.com/rustyswayne/Buzz.Hybrid/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/rustyswayne/Buzz.Hybrid</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Buzz.Hybrid is paired down version of the awesome Hybrid-Framework for Umbraco developed by Jeroen Breuer and Jeavon.</description>
     <summary>Buzz.Hybrid is paired down version of the awesome Hybrid-Framework for Umbraco developed by Jeroen Breuer and Jeavon.</summary>

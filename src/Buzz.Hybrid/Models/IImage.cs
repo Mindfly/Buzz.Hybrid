@@ -1,7 +1,7 @@
-﻿using Umbraco.Core.Models;
-
-namespace Buzz.Hybrid.Models
+﻿namespace Buzz.Hybrid.Models
 {
+    using Umbraco.Core.Models;
+
     /// <summary>
     /// Defines an image.
     /// </summary>

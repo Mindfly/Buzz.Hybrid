@@ -12,7 +12,7 @@
  -->
 
 	<!-- BUILD INITIALIZATION -->
-	<Target Name="Build" DependsOnTargets="ZipAllBinaries;NuGetPackCore">
+	<Target Name="Build" DependsOnTargets="NuGetPackCore">
 
 		<Message Text="Build number is $(AssemblyInformationVersion)" Importance="high" />
 
@@ -26,14 +26,7 @@
 		
 			<Exec WorkingDirectory="$(PackageDir)" Command="..\..\..\src\.nuget\NuGet.exe pack ..\..\..\build\nuspec\Buzz.Hybrid.nuspec" />
 
-        <Message Text="Finished NuGet Pack Buzz.Common.$(AssemblyInformationVersion).nupkg" Importance="high" />
-
-        <Message Text="Beginning NuGet Pack Buzz.Web.$(AssemblyInformationVersion).nupkg" Importance="high" />
-        
-            <Exec WorkingDirectory="$(PackageDir)" Command="..\..\..\src\.nuget\NuGet.exe pack ..\..\..\build\nuspec\Buzz.Web.nuspec" />
-
-		<Message Text="Finished NuGet Pack Buzz.Web
-                 .$(AssemblyInformationVersion).nupkg" Importance="high" />
+        <Message Text="Finished NuGet Pack Buzz.Hybrid.$(AssemblyInformationVersion).nupkg" Importance="high" />
 		
 	</Target>
 	

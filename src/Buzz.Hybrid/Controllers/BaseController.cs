@@ -1,8 +1,7 @@
-﻿using Buzz.Hybrid.Models;
-
-namespace Buzz.Hybrid.Controllers
+﻿namespace Buzz.Hybrid.Controllers
 {
     using System.Web.Mvc;
+    using Models;
     using Umbraco.Core.Logging;
     using Umbraco.Web.Models;
     using Umbraco.Web.Mvc;
