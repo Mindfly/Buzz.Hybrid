@@ -238,6 +238,7 @@
     <Compile Include="Models\Link.cs" />
     <Compile Include="Models\LinkTier.cs" />
     <Compile Include="ContentExtensions.cs" />
+    <Compile Include="Models\RelatedLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

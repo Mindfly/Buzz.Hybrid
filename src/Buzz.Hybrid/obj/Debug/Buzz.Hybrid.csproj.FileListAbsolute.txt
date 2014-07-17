@@ -151,3 +151,4 @@ E:\Work\Bram\HybridGit\src\Buzz.Hybrid\bin\Debug\umbraco.providers.xml
 E:\Work\Bram\HybridGit\src\Buzz.Hybrid\obj\Debug\Buzz.Hybrid.csprojResolveAssemblyReference.cache
 E:\Work\Bram\HybridGit\src\Buzz.Hybrid\obj\Debug\Buzz.Hybrid.dll
 E:\Work\Bram\HybridGit\src\Buzz.Hybrid\obj\Debug\Buzz.Hybrid.pdb
+C:\Working Repositories\GitHub\Buzz.Hybrid\src\Buzz.Hybrid\obj\Debug\Buzz.Hybrid.csprojResolveAssemblyReference.cache

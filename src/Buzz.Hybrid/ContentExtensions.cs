@@ -1,4 +1,6 @@
-﻿namespace Buzz.Hybrid
+﻿using Newtonsoft.Json;
+
+namespace Buzz.Hybrid
 {
     using System;
     using System.Collections.Generic;
@@ -397,6 +399,79 @@
             var ids = content.GetPropertyValue<string>(propertyAlias).Split(',');
 
             return isMedia ? umbraco.TypedMedia(ids) : umbraco.TypedContent(ids);
+        }
+
+        #endregion
+
+        #region Related Links
+
+        /// <summary>
+        /// Gets a collection of <see cref="ILink"/> from a related links picker.
+        /// </summary>
+        /// <param name="model">
+        /// The <see cref="RenderModel"/> containing the related links picker.
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias.
+        /// </param>
+        /// <returns>
+        /// A collection of <see cref="ILink"/>.
+        /// </returns>
+        public static IEnumerable<ILink> GetSafeRelatedLinks(this RenderModel model, UmbracoHelper umbraco, string propertyAlias)
+        {
+            return model.Content.GetSafeRelatedLinks(umbraco, propertyAlias);
+        }
+
+        /// <summary>
+        /// Gets a collection of <see cref="ILink"/> from a related links picker.
+        /// </summary>
+        /// <param name="content">
+        /// The <see cref="IPublishedContent"/> containing the related links picker.
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias.
+        /// </param>
+        /// <returns>
+        /// A collection of <see cref="ILink"/>.
+        /// </returns>
+        public static IEnumerable<ILink> GetSafeRelatedLinks(this IPublishedContent content, UmbracoHelper umbraco, string propertyAlias)
+        {
+            var links = new List<ILink>();
+
+            if (!content.WillWork(propertyAlias)) return links;
+
+            var relatedLinks = JsonConvert.DeserializeObject<IEnumerable<RelatedLink>>(content.GetProperty(propertyAlias).Value.ToString());
+
+
+            foreach (var relatedLink in relatedLinks)
+            {
+                var rl = new Link()
+                {
+                    Title = relatedLink.Title,
+                    Target = relatedLink.NewWindow ? "_blank" : "_self"
+                };
+
+                // internal or external link
+                if (relatedLink.IsInternal)
+                {
+                    var source = umbraco.TypedContent(relatedLink.Internal);
+                    rl.Url = source.Url;
+                }
+                else
+                {
+                    rl.Url = relatedLink.Link;
+                }
+
+                links.Add(rl);
+            }
+
+            return links;
         }
 
         #endregion
