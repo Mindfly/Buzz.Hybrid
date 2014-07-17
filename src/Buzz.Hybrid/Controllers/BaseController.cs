@@ -1,4 +1,6 @@
-﻿namespace Buzz.Hybrid.Controllers
+﻿using System.Web.Configuration;
+
+namespace Buzz.Hybrid.Controllers
 {
     using System.Web.Mvc;
     using Models;
@@ -77,29 +79,57 @@
             return View(template, model);
         }
 
+        private static bool? _disableExceptionTracking;
+
+        private static bool DisableExceptionTracking
+        {
+            get
+            {
+                if (!_disableExceptionTracking.HasValue)
+                {
+                    var configOption = WebConfigurationManager.AppSettings["Buzz.Hybrid.DisableExceptionHandling"];
+                    //see if the option was specified
+                    var isSet = !string.IsNullOrEmpty(configOption);
+                    if (isSet)
+                    {
+                        _disableExceptionTracking = configOption.ToLower() == "true";
+                    }
+                    else
+                    {
+                        _disableExceptionTracking = false;
+                    }
+                }
+                return _disableExceptionTracking.Value;
+            }
+        }
+
         /// <summary>
         /// Overrides the OnException method
         /// </summary>
         /// <param name="filterContext">The <see cref="ExceptionContext"/></param>
         protected override void OnException(ExceptionContext filterContext)
         {
-            if (filterContext.ExceptionHandled)
+            if (!DisableExceptionTracking)
             {
-                return;
+                if (filterContext.ExceptionHandled)
+                {
+                    return;
+                }
+
+                //// Log the exception.
+                LogHelper.Error<BaseSurfaceController>("An unhandled exception occurred in the application",
+                    filterContext.Exception);
+
+                //// Clear the cache if an error occurs.
+                // TODO donut cache
+                //// var cacheManager = new OutputCacheManager();
+                //// cacheManager.RemoveItems();
+
+                //// Show the view error.
+                filterContext.Result = View("Error");
+
+                filterContext.ExceptionHandled = true;
             }
-
-            //// Log the exception.
-            LogHelper.Error<BaseSurfaceController>("An unhandled exception occurred in the application", filterContext.Exception);
-
-            //// Clear the cache if an error occurs.
-            // TODO donut cache
-            //// var cacheManager = new OutputCacheManager();
-            //// cacheManager.RemoveItems();
-
-            //// Show the view error.
-            filterContext.Result = View("Error");
-
-            filterContext.ExceptionHandled = true;
         }
     }
 }
