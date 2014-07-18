@@ -7,3 +7,5 @@ ExamineIndexes/
 
 # Ignore Umbraco content cache file
 umbraco.config
+src/Buzz.Hybrid/obj/
+*.suo
