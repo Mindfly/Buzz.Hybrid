@@ -11,7 +11,7 @@
         /// <summary>
         /// The version.
         /// </summary>
-        private static readonly Version Version = new Version("1.2.2");
+        private static readonly Version Version = new Version("1.3.0");
 
         /// <summary>
         /// Gets the current version of Buzz Hybrid.

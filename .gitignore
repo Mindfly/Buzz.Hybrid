@@ -9,3 +9,4 @@ ExamineIndexes/
 umbraco.config
 src/Buzz.Hybrid/obj/
 *.suo
+src/Buzz.Hybrid/bin/Debug/
