@@ -240,6 +240,10 @@
     <Compile Include="ContentExtensions.cs" />
     <Compile Include="Models\RelatedLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routing\NotFoundHandler.cs" />
+    <Compile Include="Routing\RouteCollectionExtensions.cs" />
+    <Compile Include="Routing\UmbracoVirtualNodeByIdRouteHandler.cs" />
+    <Compile Include="Routing\UmbracoVirtualNodeRouteHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
