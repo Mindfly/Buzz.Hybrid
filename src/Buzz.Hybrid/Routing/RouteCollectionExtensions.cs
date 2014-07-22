@@ -1,4 +1,7 @@
-﻿namespace Buzz.Hybrid.Routing
+﻿using System;
+using Buzz.Hybrid.Routing.DashedRouting;
+
+namespace Buzz.Hybrid.Routing
 {
     using System.Diagnostics.CodeAnalysis;
     using System.Web.Mvc;
@@ -46,8 +49,10 @@
             object constraints = null, 
             string[] namespaces = null)
         {
-            var route = RouteTable.Routes.MapRoute(name, url, defaults, constraints, namespaces);
-            route.RouteHandler = virtualNodeHandler;
+
+            //var route = RouteTable.Routes.MapRoute(name, url, defaults, constraints, namespaces);
+            var route = new LowercaseDashedRoute(url,new RouteValueDictionary(defaults),new RouteValueDictionary(constraints), new RouteValueDictionary(), virtualNodeHandler,namespaces);
+            routes.Add(name,route);
             return route;
         }
     }

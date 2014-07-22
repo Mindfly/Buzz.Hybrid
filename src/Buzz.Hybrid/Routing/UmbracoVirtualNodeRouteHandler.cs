@@ -1,4 +1,9 @@
-﻿namespace Buzz.Hybrid.Routing
+﻿using System;
+using System.Text;
+using Buzz.Hybrid.Routing.DashedRouting;
+using Umbraco.Web.UI.Pages;
+
+namespace Buzz.Hybrid.Routing
 {
     using System.Diagnostics.CodeAnalysis;
     using System.Web;
@@ -28,7 +33,8 @@
         /// <returns>
         /// The <see cref="IHttpHandler"/>.
         /// </returns>
-        public IHttpHandler GetHttpHandler(RequestContext requestContext)
+           public IHttpHandler GetHttpHandler(RequestContext requestContext)
+        
         {
             var umbracoContext = UmbracoContext.Current;
 
@@ -55,10 +61,18 @@
             requestContext.RouteData.DataTokens.Add("umbraco", renderModel);
             requestContext.RouteData.DataTokens.Add("umbraco-doc-request", umbracoContext.PublishedContentRequest);
             requestContext.RouteData.DataTokens.Add("umbraco-context", umbracoContext);
-
             umbracoContext.PublishedContentRequest.ConfigureRequest();
 
-            return new MvcHandler(requestContext);
+
+            var values = requestContext.RouteData.Values;
+
+            values["action"] = UnDash(values["action"].ToString());
+            values["controller"] = UnDash(values["controller"].ToString());
+
+            
+            
+           return new MvcHandler(requestContext);
+           // return handler.GetHttpHandler(requestContext);
         }
 
         /// <summary>
@@ -83,6 +97,37 @@
         /// </param>
         protected virtual void PreparePublishedContentRequest(PublishedContentRequest publishedContentRequest)
         {
+        } /// <summary>
+        /// Converts some/thing-here urls to Some/ThingHere
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private string UnDash(string path)
+        {
+            if (path.Length == 0)
+                return path;
+
+            var sb = new StringBuilder();
+
+            sb.Append(Char.ToUpperInvariant(path[0]));
+
+            for (int i = 1; i < path.Length; i++)
+            {
+                if (path[i] == '-')
+                {
+                    if (i + 1 < path.Length)
+                    {
+                        sb.Append(Char.ToUpperInvariant(path[i + 1]));
+                        i++;
+                    }
+                }
+                else
+                {
+                    sb.Append(path[i]);
+                }
+            }
+
+            return sb.ToString();
         }
     }
 }
