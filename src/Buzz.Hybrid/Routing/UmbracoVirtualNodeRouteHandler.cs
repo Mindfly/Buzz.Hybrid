@@ -1,11 +1,8 @@
-﻿using System;
-using System.Text;
-using Buzz.Hybrid.Routing.DashedRouting;
-using Umbraco.Web.UI.Pages;
-
-namespace Buzz.Hybrid.Routing
+﻿namespace Buzz.Hybrid.Routing
 {
+    using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Text;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Routing;
@@ -67,12 +64,9 @@ namespace Buzz.Hybrid.Routing
             var values = requestContext.RouteData.Values;
 
             values["action"] = UnDash(values["action"].ToString());
-            values["controller"] = UnDash(values["controller"].ToString());
-
-            
+            values["controller"] = UnDash(values["controller"].ToString());            
             
            return new MvcHandler(requestContext);
-           // return handler.GetHttpHandler(requestContext);
         }
 
         /// <summary>
@@ -97,11 +91,17 @@ namespace Buzz.Hybrid.Routing
         /// </param>
         protected virtual void PreparePublishedContentRequest(PublishedContentRequest publishedContentRequest)
         {
-        } /// <summary>
+        }
+        
+        /// <summary>
         /// Converts some/thing-here urls to Some/ThingHere
         /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
+        /// <param name="path">
+        /// The path from which to remove dashes
+        /// </param>
+        /// <returns>
+        /// The undashed path.
+        /// </returns>
         private string UnDash(string path)
         {
             if (path.Length == 0)
@@ -109,7 +109,7 @@ namespace Buzz.Hybrid.Routing
 
             var sb = new StringBuilder();
 
-            sb.Append(Char.ToUpperInvariant(path[0]));
+            sb.Append(char.ToUpperInvariant(path[0]));
 
             for (int i = 1; i < path.Length; i++)
             {
@@ -117,7 +117,7 @@ namespace Buzz.Hybrid.Routing
                 {
                     if (i + 1 < path.Length)
                     {
-                        sb.Append(Char.ToUpperInvariant(path[i + 1]));
+                        sb.Append(char.ToUpperInvariant(path[i + 1]));
                         i++;
                     }
                 }

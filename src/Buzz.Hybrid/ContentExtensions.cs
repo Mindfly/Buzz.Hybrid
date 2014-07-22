@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Buzz.Hybrid
+﻿namespace Buzz.Hybrid
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +6,7 @@ namespace Buzz.Hybrid
     using System.Web;
     using System.Web.Mvc;
     using Models;
+    using Newtonsoft.Json;
     using Umbraco.Core.Models;
     using Umbraco.Web;
     using Umbraco.Web.Models;
@@ -342,9 +341,56 @@ namespace Buzz.Hybrid
         /// </returns>
         public static IImage GetSafeImage(this IPublishedContent content, UmbracoHelper umbraco, string propertyAlias, IImage defaultImage)
         {
-            return content.WillWork(propertyAlias)
-                ? umbraco.TypedMedia(content.GetSafeInteger(propertyAlias)).ToImage()
-                : defaultImage;
+            return content.GetSafeImages(umbraco, propertyAlias, defaultImage).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Checks if the model has a property and a value for the property and returns either the <see cref="IImage"/> representation
+        /// of the property or the default <see cref="IImage"/>s
+        /// </summary>
+        /// <param name="model">
+        /// The <see cref="RenderModel"/> which has the media picker property
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias of the media picker
+        /// </param>        
+        /// <returns>
+        /// A collection of <see cref="IImage"/>.
+        /// </returns>
+        public static IEnumerable<IImage> GetSafeImages(this RenderModel model, UmbracoHelper umbraco, string propertyAlias)
+        {
+            return model.Content.GetSafeImages(umbraco, propertyAlias, null);
+        }
+
+        /// <summary>
+        /// Checks if the model has a property and a value for the property and returns either the <see cref="IImage"/> representation
+        /// of the property or the default <see cref="IImage"/>s
+        /// </summary>
+        /// <param name="content">
+        /// The content which has the media picker property
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias of the media picker
+        /// </param>
+        /// <param name="defaultImage">
+        /// A default image to return if there are no results
+        /// </param>
+        /// <returns>
+        /// A collection of <see cref="IImage"/>.
+        /// </returns>
+        public static IEnumerable<IImage> GetSafeImages(this IPublishedContent content, UmbracoHelper umbraco,string propertyAlias, IImage defaultImage)
+        {
+            var mediaContent = content.GetSafeMntpPublishedContent(umbraco, propertyAlias, true).ToArray();
+
+            return mediaContent.Any()
+                ? mediaContent.Select(x => x.ToImage())
+                : new List<IImage>() { defaultImage };
         }
 
         #endregion
