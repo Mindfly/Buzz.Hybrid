@@ -395,6 +395,125 @@
 
         #endregion
 
+        #region IMediaFile
+
+        /// <summary>
+        /// Checks if the model has a property and a value for the property and returns either the <see cref="IMediaFile"/> representation
+        /// of the property or the default <see cref="IMediaFile"/>
+        /// </summary>
+        /// <param name="model">
+        /// The <see cref="RenderModel"/>
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The Umbraco property alias.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IMediaFile"/>.
+        /// </returns>
+        public static IMediaFile GetSafeMediaFile(this RenderModel model, UmbracoHelper umbraco, string propertyAlias)
+        {
+            return model.Content.GetSafeMediaFile(umbraco, propertyAlias);
+        }
+
+        /// <summary>
+        /// Checks if the model has a property and a value for the property and returns either the <see cref="IMediaFile"/> representation
+        /// of the property or the default <see cref="IMediaFile"/>
+        /// </summary>
+        /// <param name="content">
+        /// The <see cref="IPublishedContent"/>
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The Umbraco property alias.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IMediaFile"/>.
+        /// </returns>
+        public static IMediaFile GetSafeMediaFile(this IPublishedContent content, UmbracoHelper umbraco, string propertyAlias)
+        {
+            return content.GetSafeMediaFile(umbraco, propertyAlias, null);
+        }
+
+        /// <summary>
+        /// Checks if the model has a property and a value for the property and returns either the <see cref="IMediaFile"/> representation
+        /// of the property or the default <see cref="IMediaFile"/>
+        /// </summary>
+        /// <param name="content">
+        /// The <see cref="IPublishedContent"/>
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The Umbraco property alias.
+        /// </param>
+        /// <param name="defaultImage">
+        /// The default image.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IMediaFile"/>.
+        /// </returns>
+        public static IMediaFile GetSafeMediaFile(this IPublishedContent content, UmbracoHelper umbraco, string propertyAlias, IImage defaultImage)
+        {
+            return content.GetSafeMediaFiles(umbraco, propertyAlias, defaultImage).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Checks if the model has a property and a value for the property and returns either the <see cref="IMediaFile"/> representation
+        /// of the property or the default <see cref="IMediaFile"/>s
+        /// </summary>
+        /// <param name="model">
+        /// The <see cref="RenderModel"/> which has the media picker property
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias of the media picker
+        /// </param>        
+        /// <returns>
+        /// A collection of <see cref="IMediaFile"/>.
+        /// </returns>
+        public static IEnumerable<IMediaFile> GetSafeMediaFiles(this RenderModel model, UmbracoHelper umbraco, string propertyAlias)
+        {
+            return model.Content.GetSafeMediaFiles(umbraco, propertyAlias, null);
+        }
+
+        /// <summary>
+        /// Checks if the model has a property and a value for the property and returns either the <see cref="IMediaFile"/> representation
+        /// of the property or the default <see cref="IMediaFile"/>s
+        /// </summary>
+        /// <param name="content">
+        /// The content which has the media picker property
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias of the media picker
+        /// </param>
+        /// <param name="defaultFile">
+        /// The default File.
+        /// </param>
+        /// <returns>
+        /// A collection of <see cref="IMediaFile"/>.
+        /// </returns>
+        public static IEnumerable<IMediaFile> GetSafeMediaFiles(this IPublishedContent content, UmbracoHelper umbraco, string propertyAlias, IImage defaultFile)
+        {
+            var mediaContent = content.GetSafeMntpPublishedContent(umbraco, propertyAlias, true).ToArray();
+
+            return mediaContent.Any()
+                ? mediaContent.Select(x => x.ToMediaFile())
+                : new List<IMediaFile>() { defaultFile };
+        }
+
+        #endregion
+
         #region MNTP
 
         /// <summary>
@@ -548,6 +667,42 @@
         internal static IImage ToImage(this IPublishedContent content)
         {
             return new Image()
+            {
+                Content = content,
+                Id = content.Id,
+                Bytes = content.GetSafeInteger("umbracoBytes", 0),
+                Extension = content.GetSafeString("umbracoExtension"),
+                Url = content.Url,
+                Name = content.Name
+            };
+        }
+
+        /// <summary>
+        /// Creates a collection of <see cref="IMediaFile"/> from a list of <see cref="IPublishedContent"/> (media)
+        /// </summary>
+        /// <param name="contents">
+        /// The collection of <see cref="IPublishedContent"/>
+        /// </param>
+        /// <returns>
+        /// The collection of <see cref="IMediaFile"/>.
+        /// </returns>
+        internal static IEnumerable<IMediaFile> ToMediaFiles(this IEnumerable<IPublishedContent> contents)
+        {
+            return contents.ToList().Select(x => x.ToMediaFile());
+        }
+
+        /// <summary>
+        /// Utility extension to convert <see cref="IPublishedContent"/> to an <see cref="IMediaFile"/>
+        /// </summary>W
+        /// <param name="content">
+        /// The <see cref="IPublishedContent"/>
+        /// </param>
+        /// <returns>
+        /// The <see cref="IMediaFile"/>.
+        /// </returns>
+        internal static IMediaFile ToMediaFile(this IPublishedContent content)
+        {
+            return new MediaFile()
             {
                 Content = content,
                 Id = content.Id,
