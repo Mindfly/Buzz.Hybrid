@@ -1,7 +1,4 @@
-﻿using System;
-using Buzz.Hybrid.Routing.DashedRouting;
-
-namespace Buzz.Hybrid.Routing
+﻿namespace Buzz.Hybrid.Routing
 {
     using System.Diagnostics.CodeAnalysis;
     using System.Web.Mvc;
@@ -14,7 +11,7 @@ namespace Buzz.Hybrid.Routing
     public static class RouteCollectionExtensions
     {
         /// <summary>
-        /// The map umbraco route.
+        /// Maps a custom Umbraco route.
         /// </summary>
         /// <param name="routes">
         /// The routes.
@@ -49,9 +46,8 @@ namespace Buzz.Hybrid.Routing
             object constraints = null, 
             string[] namespaces = null)
         {
-
-            //var route = RouteTable.Routes.MapRoute(name, url, defaults, constraints, namespaces);
-            var route = new LowercaseDashedRoute(url,new RouteValueDictionary(defaults),new RouteValueDictionary(constraints), new RouteValueDictionary(), virtualNodeHandler,namespaces);
+            var route = RouteTable.Routes.MapRoute(name, url, defaults, constraints, namespaces);
+            ////var route = new LowercaseDashedRoute(url,new RouteValueDictionary(defaults),new RouteValueDictionary(constraints), new RouteValueDictionary(), virtualNodeHandler,namespaces);
             routes.Add(name,route);
             return route;
         }
