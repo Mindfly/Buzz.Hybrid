@@ -4,6 +4,8 @@
     using System.Web.Mvc;
     using System.Web.Routing;
 
+    using Buzz.Hybrid.Routing.DashedRouting;
+
     /// <summary>
     /// Helpers for MVC routes taken from https://github.com/Shandem/Articulate/blob/master/Articulate/RouteCollectionExtensions.cs
     /// </summary>
@@ -46,9 +48,9 @@
             object constraints = null, 
             string[] namespaces = null)
         {
-            var route = RouteTable.Routes.MapRoute(name, url, defaults, constraints, namespaces);
-            ////var route = new LowercaseDashedRoute(url,new RouteValueDictionary(defaults),new RouteValueDictionary(constraints), new RouteValueDictionary(), virtualNodeHandler,namespaces);
-            routes.Add(name,route);
+            //var route = RouteTable.Routes.MapRoute(name, url, defaults, constraints, namespaces);
+            var route = new LowercaseDashedRoute(url, new RouteValueDictionary(defaults), new RouteValueDictionary(constraints), new RouteValueDictionary(), virtualNodeHandler, namespaces);
+            routes.Add(name, route);
             return route;
         }
     }
