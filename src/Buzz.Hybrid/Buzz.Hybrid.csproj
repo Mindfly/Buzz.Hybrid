@@ -231,6 +231,8 @@
     <Compile Include="Helpers\LinkHelper.cs" />
     <Compile Include="ImageExtensions.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\MediaFile.cs" />
+    <Compile Include="Models\IMediaFile.cs" />
     <Compile Include="Models\IImage.cs" />
     <Compile Include="Models\ILink.cs" />
     <Compile Include="Models\ILinkTier.cs" />
