@@ -218,6 +218,63 @@
         }
 
         /// <summary>
+        /// Checks if the model has a property and a value for the property and returns either the string representation
+        /// of the property or the default value of false
+        /// </summary>
+        /// <param name="model">
+        /// The <see cref="RenderModel"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The Umbraco property alias.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public static bool GetSafeBoolean(this RenderModel model, string propertyAlias)
+        {
+            return model.Content.GetSafeBoolean(propertyAlias);
+        }
+
+        /// <summary>
+        /// Checks if the model has a property and a value for the property and returns either the string representation
+        /// of the property or the default value of false
+        /// </summary>
+        /// <param name="content">
+        /// The <see cref="IPublishedContent"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The Umbraco property alias.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public static bool GetSafeBoolean(this IPublishedContent content, string propertyAlias)
+        {
+            return content.GetSafeBoolean(propertyAlias, false);
+        }
+
+        /// <summary>
+        /// Checks if the model has a property and a value for the property and returns either the string representation
+        /// of the property or the default value of false
+        /// </summary>
+        /// <param name="content">
+        /// The <see cref="IPublishedContent"/>
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The Umbraco property alias.
+        /// </param>
+        /// <param name="defaultValue">
+        /// The default Value.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
+        public static bool GetSafeBoolean(this IPublishedContent content, string propertyAlias, bool defaultValue)
+        {
+            return content.WillWork(propertyAlias) ? content.GetPropertyValue<bool>(propertyAlias) : defaultValue;
+        }
+
+        /// <summary>
         /// Checks if the model has a property and a value for the property and returns either the <see cref="IHtmlString"/> representation
         /// of the property or an empty <see cref="IHtmlString"/>
         /// </summary>
