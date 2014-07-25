@@ -16,7 +16,7 @@
     public class SmtpMailer
     {
         /// <summary>
-        /// The send.
+        /// Sends an email 
         /// </summary>
         /// <param name="fromEmail">
         /// The from email.
