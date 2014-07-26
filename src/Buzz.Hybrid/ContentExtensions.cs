@@ -730,7 +730,8 @@
                 Bytes = content.GetSafeInteger("umbracoBytes", 0),
                 Extension = content.GetSafeString("umbracoExtension"),
                 Url = content.Url,
-                Name = content.Name
+                Name = content.Name,
+                AbsoluteUrl = content.UrlAbsolute()
             };
         }
 
@@ -766,7 +767,8 @@
                 Bytes = content.GetSafeInteger("umbracoBytes", 0),
                 Extension = content.GetSafeString("umbracoExtension"),
                 Url = content.Url,
-                Name = content.Name
+                Name = content.Name,
+                AbsoluteUrl = content.UrlAbsolute()
             };
         }
     }

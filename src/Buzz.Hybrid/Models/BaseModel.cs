@@ -20,6 +20,14 @@
         }
 
         /// <summary>
+        /// Gets or sets the full url, including domain.
+        /// </summary>
+        public string AbsoluteUrl
+        {
+            get { return this.GetSafeString(Content.UrlAbsolute()); }
+        }
+
+        /// <summary>
         /// Gets the page title
         /// </summary>
         public IHtmlString PageTitle
