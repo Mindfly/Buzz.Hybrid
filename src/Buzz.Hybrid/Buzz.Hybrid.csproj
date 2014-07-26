@@ -228,7 +228,9 @@
   <ItemGroup>
     <Compile Include="Configuration\BuzzHybridVersion.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="EnumeratedElementType.cs" />
     <Compile Include="Helpers\LinkHelper.cs" />
+    <Compile Include="HtmlHelperExtensions.cs" />
     <Compile Include="ImageExtensions.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\MediaFile.cs" />
