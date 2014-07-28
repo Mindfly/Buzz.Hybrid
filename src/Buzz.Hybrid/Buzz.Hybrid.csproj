@@ -231,6 +231,7 @@
     <Compile Include="EnumeratedElementType.cs" />
     <Compile Include="Helpers\LinkHelper.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
+    <Compile Include="HttpContextExtensions.cs" />
     <Compile Include="ImageExtensions.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\MediaFile.cs" />

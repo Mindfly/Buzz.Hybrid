@@ -271,7 +271,9 @@
         /// </returns>
         public static bool GetSafeBoolean(this IPublishedContent content, string propertyAlias, bool defaultValue)
         {
-            return content.WillWork(propertyAlias) ? content.GetPropertyValue<bool>(propertyAlias) : defaultValue;
+            var value = content.GetSafeString(propertyAlias).ToLowerInvariant();
+            if (string.IsNullOrEmpty(value)) return defaultValue;
+            return value == "yes" || value == "1" || value == "true";
         }
 
         /// <summary>
