@@ -84,7 +84,7 @@
         /// <exception cref="NullReferenceException">
         /// Throws a null reference exception if the HttpContext is null.
         /// </exception>
-        private static string MakeAbsolutUrl(string relativeUrl, string queryString)
+        public static string MakeAbsolutUrl(string relativeUrl, string queryString)
         {
             if (relativeUrl.StartsWith("http")) return relativeUrl;
 
