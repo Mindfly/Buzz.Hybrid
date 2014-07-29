@@ -228,6 +228,8 @@
   <ItemGroup>
     <Compile Include="Configuration\BuzzHybridVersion.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ExitHttpsIfNotRequiredAttribute.cs" />
+    <Compile Include="Controllers\RequireSslAttribute.cs" />
     <Compile Include="EnumeratedElementType.cs" />
     <Compile Include="Helpers\LinkHelper.cs" />
     <Compile Include="HtmlHelperExtensions.cs" />
