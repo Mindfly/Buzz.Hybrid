@@ -571,6 +571,48 @@
 
         #endregion
 
+        /// <summary>
+        /// Gets a content Id from a content picker and renders it as <see cref="IPublishedContent"/>.
+        /// </summary>
+        /// <param name="model">
+        /// The current <see cref="RenderModel"/>.
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias.
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IPublishedContent"/> from the content picker.
+        /// </returns>
+        public static IPublishedContent GetSafeContent(this RenderModel model, string propertyAlias, UmbracoHelper umbraco)
+        {
+            return model.Content.GetSafeContent(propertyAlias, umbraco);
+        }
+
+        /// <summary>
+        /// Gets a content Id from a content picker and renders it as <see cref="IPublishedContent"/>.
+        /// </summary>
+        /// <param name="content">
+        /// The current <see cref="IPublishedContent"/>.
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias.
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IPublishedContent"/> from the content picker.
+        /// </returns>
+        public static IPublishedContent GetSafeContent(this IPublishedContent content, string propertyAlias, UmbracoHelper umbraco)
+        {
+            return content.WillWork(propertyAlias)
+                       ? umbraco.TypedContent(content.GetPropertyValue(propertyAlias))
+                       : null;
+        }
+        
         #region MNTP
 
         /// <summary>
@@ -730,8 +772,7 @@
                 Bytes = content.GetSafeInteger("umbracoBytes", 0),
                 Extension = content.GetSafeString("umbracoExtension"),
                 Url = content.Url,
-                Name = content.Name,
-                AbsoluteUrl = content.UrlAbsolute()
+                Name = content.Name
             };
         }
 
@@ -767,8 +808,7 @@
                 Bytes = content.GetSafeInteger("umbracoBytes", 0),
                 Extension = content.GetSafeString("umbracoExtension"),
                 Url = content.Url,
-                Name = content.Name,
-                AbsoluteUrl = content.UrlAbsolute()
+                Name = content.Name
             };
         }
     }
