@@ -1,7 +1,6 @@
-﻿using System.Web.Configuration;
-
-namespace Buzz.Hybrid.Controllers
+﻿namespace Buzz.Hybrid.Controllers
 {
+    using System.Web.Configuration;
     using System.Web.Mvc;
     using Models;
     using Umbraco.Core.Logging;
@@ -11,6 +10,7 @@ namespace Buzz.Hybrid.Controllers
     /// <summary>
     /// Represents the base surface controller
     /// </summary>
+    [ExitHttpsIfNotRequiredAttribute]
     public abstract class BaseSurfaceController : SurfaceController, IRenderMvcController
     {
         /// <summary>

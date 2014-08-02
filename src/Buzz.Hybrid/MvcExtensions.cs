@@ -5,6 +5,9 @@
     using System.Web.Mvc;
     using System.Web.WebPages;
 
+    /// <summary>
+    /// Generic mvc extensions.
+    /// </summary>
     public static class MvcExtensions
     {
         /// <summary>
