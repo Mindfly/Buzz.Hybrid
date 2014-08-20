@@ -751,7 +751,7 @@
         /// <returns>
         /// The collection of <see cref="IImage"/>.
         /// </returns>
-        internal static IEnumerable<IImage> ToImages(this IEnumerable<IPublishedContent> contents)
+        public static IEnumerable<IImage> ToImages(this IEnumerable<IPublishedContent> contents)
         {
             return contents.ToList().Select(x => x.ToImage());
         }
@@ -765,7 +765,7 @@
         /// <returns>
         /// The <see cref="IImage"/>.
         /// </returns>
-        internal static IImage ToImage(this IPublishedContent content)
+        public static IImage ToImage(this IPublishedContent content)
         {
             return new Image()
             {
@@ -787,7 +787,7 @@
         /// <returns>
         /// The collection of <see cref="IMediaFile"/>.
         /// </returns>
-        internal static IEnumerable<IMediaFile> ToMediaFiles(this IEnumerable<IPublishedContent> contents)
+        public static IEnumerable<IMediaFile> ToMediaFiles(this IEnumerable<IPublishedContent> contents)
         {
             return contents.ToList().Select(x => x.ToMediaFile());
         }
@@ -801,7 +801,7 @@
         /// <returns>
         /// The <see cref="IMediaFile"/>.
         /// </returns>
-        internal static IMediaFile ToMediaFile(this IPublishedContent content)
+        public static IMediaFile ToMediaFile(this IPublishedContent content)
         {
             return new MediaFile()
             {
