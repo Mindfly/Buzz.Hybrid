@@ -3,3 +3,4 @@ C:\Working Repositories\GitHub\Buzz.Hybrid\build\Temp\bin\Buzz.Hybrid.pdb
 C:\Working Repositories\GitHub\Buzz.Hybrid\src\Buzz.Hybrid\obj\Release\Buzz.Hybrid.csprojResolveAssemblyReference.cache
 C:\Working Repositories\GitHub\Buzz.Hybrid\src\Buzz.Hybrid\obj\Release\Buzz.Hybrid.dll
 C:\Working Repositories\GitHub\Buzz.Hybrid\src\Buzz.Hybrid\obj\Release\Buzz.Hybrid.pdb
+C:\Working Repositories\GitHub\Buzz.Hybrid\build\Temp\bin\Buzz.Hybrid.dll.config

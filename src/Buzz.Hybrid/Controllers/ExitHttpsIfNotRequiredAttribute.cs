@@ -32,10 +32,8 @@
                 return;
 
             // Return if a controller defines a RequireHttpsAttribute
-            if (
-                filterContext.ActionDescriptor.ControllerDescriptor.GetCustomAttributes(typeof (RequireHttpsAttribute),
-                    true).Length > 0) return;
-            if (filterContext.ActionDescriptor.GetCustomAttributes(typeof (RequireHttpsAttribute), true).Length > 0)
+            if (filterContext.ActionDescriptor.ControllerDescriptor.GetCustomAttributes(typeof(RequireHttpsAttribute), true).Length > 0) return;
+            if (filterContext.ActionDescriptor.GetCustomAttributes(typeof(RequireHttpsAttribute), true).Length > 0)
                 return;
 
             // Redirect to the non https version
