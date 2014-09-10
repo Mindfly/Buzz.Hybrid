@@ -36,5 +36,10 @@
         /// Gets or sets the extension.
         /// </summary>
         string Extension { get; set; }
+
+        /// <summary>
+        /// Gets or sets the full url, including domain.
+        /// </summary>
+        string AbsoluteUrl { get; set; }
     }
 }

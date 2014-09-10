@@ -573,6 +573,48 @@
 
         #endregion
 
+        /// <summary>
+        /// Gets a content Id from a content picker and renders it as <see cref="IPublishedContent"/>.
+        /// </summary>
+        /// <param name="model">
+        /// The current <see cref="RenderModel"/>.
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias.
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IPublishedContent"/> from the content picker.
+        /// </returns>
+        public static IPublishedContent GetSafeContent(this RenderModel model, string propertyAlias, UmbracoHelper umbraco)
+        {
+            return model.Content.GetSafeContent(propertyAlias, umbraco);
+        }
+
+        /// <summary>
+        /// Gets a content Id from a content picker and renders it as <see cref="IPublishedContent"/>.
+        /// </summary>
+        /// <param name="content">
+        /// The current <see cref="IPublishedContent"/>.
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias.
+        /// </param>
+        /// <param name="umbraco">
+        /// The <see cref="UmbracoHelper"/>.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IPublishedContent"/> from the content picker.
+        /// </returns>
+        public static IPublishedContent GetSafeContent(this IPublishedContent content, string propertyAlias, UmbracoHelper umbraco)
+        {
+            return content.WillWork(propertyAlias)
+                       ? umbraco.TypedContent(content.GetPropertyValue(propertyAlias))
+                       : null;
+        }
+        
         #region MNTP
 
         /// <summary>
@@ -709,7 +751,7 @@
         /// <returns>
         /// The collection of <see cref="IImage"/>.
         /// </returns>
-        internal static IEnumerable<IImage> ToImages(this IEnumerable<IPublishedContent> contents)
+        public static IEnumerable<IImage> ToImages(this IEnumerable<IPublishedContent> contents)
         {
             return contents.ToList().Select(x => x.ToImage());
         }
@@ -723,7 +765,7 @@
         /// <returns>
         /// The <see cref="IImage"/>.
         /// </returns>
-        internal static IImage ToImage(this IPublishedContent content)
+        public static IImage ToImage(this IPublishedContent content)
         {
             return new Image()
             {
@@ -745,7 +787,7 @@
         /// <returns>
         /// The collection of <see cref="IMediaFile"/>.
         /// </returns>
-        internal static IEnumerable<IMediaFile> ToMediaFiles(this IEnumerable<IPublishedContent> contents)
+        public static IEnumerable<IMediaFile> ToMediaFiles(this IEnumerable<IPublishedContent> contents)
         {
             return contents.ToList().Select(x => x.ToMediaFile());
         }
@@ -759,7 +801,7 @@
         /// <returns>
         /// The <see cref="IMediaFile"/>.
         /// </returns>
-        internal static IMediaFile ToMediaFile(this IPublishedContent content)
+        public static IMediaFile ToMediaFile(this IPublishedContent content)
         {
             return new MediaFile()
             {
