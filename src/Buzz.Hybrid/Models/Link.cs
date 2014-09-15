@@ -13,6 +13,11 @@
         public int ContentId { get; set; }
 
         /// <summary>
+        /// Gets or sets the content type alias.
+        /// </summary>
+        public string ContentTypeAlias { get; set; }
+
+        /// <summary>
         /// Gets or sets the link title
         /// </summary>
         public string Title { get; set; }

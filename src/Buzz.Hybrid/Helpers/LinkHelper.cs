@@ -1,4 +1,6 @@
-﻿namespace Buzz.Hybrid.Helpers
+﻿using Buzz.Hybrid.Events;
+
+namespace Buzz.Hybrid.Helpers
 {
     using System;
     using System.Collections.Generic;
@@ -13,6 +15,23 @@
     /// </summary>
     public class LinkHelper
     {
+        /// <summary>
+        /// The changed link tier event handler.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="arg">
+        /// The arg.
+        /// </param>
+        public delegate void ChangedLinkTierEventHandler(object sender, AddingLinkTierEventArgs arg);
+
+        /// <summary>
+        /// The adding tier.
+        /// </summary>
+        public event ChangedLinkTierEventHandler AddingTier;
+
+
         #region Menu Methods
 
         /// <summary>
@@ -34,6 +53,7 @@
             var tier = new LinkTier()
             {
                 ContentId = tierItem.Id,
+                ContentTypeAlias = tierItem.DocumentTypeAlias,
                 Title = tierItem.Name,
                 Url = ContentHasTemplate(tierItem) ? tierItem.Url : string.Empty,
                 CssClass = active ? "active" : string.Empty
@@ -45,7 +65,11 @@
 
             foreach (var item in tierItem.Children.ToList().Where(x => x.IsVisible() && (ContentHasTemplate(x) || includeContentWithoutTemplate) && !excludeDocumentTypes.Contains(x.DocumentTypeAlias)))
             {
-                tier.Children.Add(BuildLinkTier(item, current, excludeDocumentTypes, item.Level, maxLevel));
+                var newTier = BuildLinkTier(item, current, excludeDocumentTypes, item.Level, maxLevel);
+
+                AddingTier.Invoke(this, new AddingLinkTierEventArgs(tier, newTier));
+                
+                tier.Children.Add(newTier);
             }
 
             return tier;
@@ -62,6 +86,8 @@
         {
             var link = new Link()
             {
+                ContentId = current.Id,
+                ContentTypeAlias = current.DocumentTypeAlias,
                 Title = current.Name,
                 Target = "_self",
                 Url = current.Url,

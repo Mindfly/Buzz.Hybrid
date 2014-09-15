@@ -2,12 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Buzz.Hybrid</id>
-    <version>1.3.16</version>
+    <version>1.3.17</version>
     <title>Buzz Hybrid Binaries</title>
     <authors>Rusty Swayne</authors>
     <owners>Mindfly Web Design Studio</owners>
     <licenseUrl>https://github.com/rustyswayne/Buzz.Hybrid/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/rustyswayne/Buzz.Hybrid</projectUrl>
+    <iconUrl>http://www.mindfly.com/media/38989/bee_v01.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Buzz.Hybrid is paired down version of the awesome Hybrid-Framework for Umbraco developed by Jeroen Breuer and Jeavon.</description>
     <summary>Buzz.Hybrid is paired down version of the awesome Hybrid-Framework for Umbraco developed by Jeroen Breuer and Jeavon.</summary>
