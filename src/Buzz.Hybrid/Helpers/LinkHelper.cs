@@ -63,12 +63,15 @@ namespace Buzz.Hybrid.Helpers
 
             if (tierLevel > maxLevel && maxLevel != 0) return tier;
 
-            foreach (var item in tierItem.Children.ToList().Where(x => x.IsVisible() && (ContentHasTemplate(x) || includeContentWithoutTemplate) && !excludeDocumentTypes.Contains(x.DocumentTypeAlias)))
+            foreach (var item in tierItem.Children.ToList().Where(x => x.IsVisible() && (ContentHasTemplate(x) || (includeContentWithoutTemplate && x.IsVisible())) && !excludeDocumentTypes.Contains(x.DocumentTypeAlias)))
             {
                 var newTier = BuildLinkTier(item, current, excludeDocumentTypes, item.Level, maxLevel);
 
-                AddingTier.Invoke(this, new AddingLinkTierEventArgs(tier, newTier));
-                
+                if (AddingTier != null)
+                {
+                    AddingTier.Invoke(this, new AddingLinkTierEventArgs(tier, newTier));    
+                }
+                                
                 tier.Children.Add(newTier);
             }
 
@@ -106,6 +109,7 @@ namespace Buzz.Hybrid.Helpers
         }
 
         #endregion
+
 
         /// <summary>
         /// Quick fix to all for checking if a content item has a template
