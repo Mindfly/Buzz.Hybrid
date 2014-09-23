@@ -101,6 +101,65 @@
             return content.WillWork(propertyAlias) ? content.GetPropertyValue<string>(propertyAlias) : defaultValue;
         }
 
+
+        /// <summary>
+        /// Gets a safe date time from content
+        /// </summary>
+        /// <param name="content">
+        /// The content.
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias.
+        /// </param>
+        /// <returns>
+        /// The <see cref="DateTime"/>.
+        /// </returns>
+        public static DateTime GetSafeDateTime(this IPublishedContent content, string propertyAlias)
+        {
+            return content.GetSafeDateTime(propertyAlias, DateTime.MinValue);
+        }
+
+        /// <summary>
+        /// Gets a safe date time from content
+        /// </summary>
+        /// <param name="content">
+        /// The content.
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias.
+        /// </param>
+        /// <param name="defaultValue">
+        /// The default value.
+        /// </param>
+        /// <returns>
+        /// The <see cref="DateTime"/>.
+        /// </returns>
+        public static DateTime GetSafeDateTime(this IPublishedContent content, string propertyAlias, DateTime defaultValue)
+        {
+            if (!content.WillWork(propertyAlias)) return defaultValue;
+
+            DateTime dt;
+
+            return DateTime.TryParse(content.GetPropertyValue<string>(propertyAlias), out dt) ? dt : defaultValue;
+        }
+
+        /// <summary>
+        /// Gets a safe date time from content.
+        /// </summary>
+        /// <param name="model">
+        /// The <see cref="RenderModel"/>.
+        /// </param>
+        /// <param name="propertyAlias">
+        /// The property alias.
+        /// </param>
+        /// <returns>
+        /// The <see cref="DateTime"/>.
+        /// </returns>
+        public static DateTime GetSafeDateTime(this RenderModel model, string propertyAlias)
+        {
+            return model.Content.GetSafeDateTime(propertyAlias);
+        }
+
         /// <summary>
         /// Checks if the model has a property and a value for the property and returns either the Guid representation
         /// of the property or the default value
@@ -562,12 +621,12 @@
         /// <returns>
         /// A collection of <see cref="IMediaFile"/>.
         /// </returns>
-        public static IEnumerable<IMediaFile> GetSafeMediaFiles(this IPublishedContent content, UmbracoHelper umbraco, string propertyAlias, IImage defaultFile)
+        public static IEnumerable<IMediaFile> GetSafeMediaFiles(this IPublishedContent content, UmbracoHelper umbraco, string propertyAlias, IMediaFile defaultFile)
         {
             var mediaContent = content.GetSafeMntpPublishedContent(umbraco, propertyAlias, true).ToArray();
 
             return mediaContent.Any()
-                ? mediaContent.Select(x => x.ToMediaFile())
+                ? mediaContent.Where(x => x != null).Select(x => x.ToMediaFile())
                 : new List<IMediaFile>() { defaultFile };
         }
 
@@ -660,9 +719,11 @@
         /// </returns>
         public static IEnumerable<IPublishedContent> GetSafeMntpPublishedContent(this IPublishedContent content, UmbracoHelper umbraco, string propertyAlias, bool isMedia = false)
         {
-            if (!content.WillWork(propertyAlias)) return new List<IPublishedContent>();
+            if (!content.WillWork(propertyAlias)) return new IPublishedContent[] { };
 
             var ids = content.GetPropertyValue<string>(propertyAlias).Split(',');
+
+            if (!ids.Any()) return new IPublishedContent[] { };
 
             return isMedia ? umbraco.TypedMedia(ids) : umbraco.TypedContent(ids);
         }
