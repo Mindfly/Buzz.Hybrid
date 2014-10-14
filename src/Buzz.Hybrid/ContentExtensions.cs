@@ -507,7 +507,7 @@
             var mediaContent = content.GetSafeMntpPublishedContent(umbraco, propertyAlias, true).ToArray();
 
             return mediaContent.Any()
-                ? mediaContent.Select(x => x.ToImage())
+                ? mediaContent.Where(x => x != null).Select(x => x.ToImage())
                 : new List<IImage>() { defaultImage };
         }
 
