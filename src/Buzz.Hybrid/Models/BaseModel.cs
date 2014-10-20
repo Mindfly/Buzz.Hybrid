@@ -28,47 +28,6 @@
         }
 
         /// <summary>
-        /// Gets the page title
-        /// </summary>
-        public IHtmlString PageTitle
-        {
-            get { return MvcHtmlString.Create(Content.GetSafeString("pageTitle", Content.Name)); }
-        }
-
-        /// <summary>
-        /// Gets the meta description
-        /// </summary>
-        public string MetaDescription
-        {
-            get { return Content.GetSafeString("metaDescription"); }
-        }
-
-        /// <summary>
-        /// Gets the meta keywords
-        /// </summary>
-        public string MetaKeywords
-        {
-            get { return Content.GetSafeString("metaKeywords"); }
-        }
-
-        /// <summary>
-        /// Gets the body CSS override
-        /// </summary>
-        public string BodyCss
-        {
-            get
-            {
-                var cssclass = Content.GetSafeString("bodyCSS", Content.DocumentTypeAlias);
-
-                cssclass = Content.DocumentTypeAlias.Equals(cssclass)
-                    ? cssclass
-                    : string.Format("{0} {1}", Content.DocumentTypeAlias, cssclass);
-
-                return string.Format("{0} {1}", cssclass, CultureInfo.CurrentCulture.Name);
-            }
-        }
-
-        /// <summary>
         /// Gets a value indicating whether or not this page is to be displayed in the navigation
         /// </summary>
         /// <remarks>
