@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Buzz.Hybrid</id>
-    <version>1.3.20</version>
+    <version>3.0.0</version>
     <title>Buzz Hybrid Binaries</title>
     <authors>Rusty Swayne, Heather Floyd</authors>
     <owners>Mindfly Web Design Studio</owners>
