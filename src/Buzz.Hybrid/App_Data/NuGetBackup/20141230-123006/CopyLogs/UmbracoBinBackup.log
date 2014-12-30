@@ -1,0 +1,61 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Tuesday, December 30, 2014 12:30:06 PM
+   Source : C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\bin\
+     Dest : C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\App_Data\NuGetBackup\20141230-123006\bin\
+
+    Files : *.*
+	    
+  Options : *.* /S /E /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                   0	C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\bin\
+	  New Dir         30	C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\bin\Debug\
+	    New File  		  114688	businesslogic.dll  0%  100%  
+	    New File  		  119495	businesslogic.xml  0%  100%  
+	    New File  		   38400	Buzz.Hybrid.dll  0%  100%  
+	    New File  		    1402	Buzz.Hybrid.dll.config  0%  100%  
+	    New File  		   97792	Buzz.Hybrid.pdb  0%  100%  
+	    New File  		  512000	cms.dll  0%   25%   51%   76%  100%  
+	    New File  		  329133	cms.xml  0%   39%   79%  100%  
+	    New File  		   51712	controls.dll  0%  100%  
+	    New File  		    9068	controls.xml  0%  100%  
+	    New File  		   24576	interfaces.dll  0%  100%  
+	    New File  		   11197	interfaces.xml  0%  100%  
+	    New File  		  258048	log4net.dll  0%   50%  100%  
+	    New File  		   11264	Microsoft.ApplicationBlocks.Data.dll  0%  100%  
+	    New File  		  502272	Newtonsoft.Json.dll  0%   26%   52%   78%  100%  
+	    New File  		  478726	Newtonsoft.Json.xml  0%   27%   54%   82%  100%  
+	    New File  		  506976	System.Web.Mvc.dll  0%   25%   51%   77%  100%  
+	    New File  		  847872	System.Web.Mvc.xml  0%   30%   61%   92%  100%  
+	    New File  		  204400	System.Web.WebPages.dll  0%   64%  100%  
+	    New File  		  223301	System.Web.WebPages.xml  0%   58%  100%  
+	    New File  		  192512	TidyNet.dll  0%   68%  100%  
+	    New File  		   1.8 m	Umbraco.Core.dll  0%   13%   27%   40%   54%   67%   81%   94%  100%  
+	    New File  		   1.3 m	Umbraco.Core.xml  0%   17%   35%   53%   71%   89%  100%  
+	    New File  		   38912	umbraco.DataLayer.dll  0%  100%  
+	    New File  		  115002	umbraco.DataLayer.xml  0%  100%  
+	    New File  		   1.7 m	umbraco.dll  0%   14%   28%   42%   57%   71%   85%   99%  100%  
+	    New File  		   37888	umbraco.providers.dll  0%  100%  
+	    New File  		   51453	umbraco.providers.xml  0%  100%  
+	    New File  		   1.3 m	umbraco.xml  0%   19%   38%   57%   76%   95%  100%  
+	    New File  		   78336	umbraco.XmlSerializers.dll  0%  100%  
+	    New File  		   34816	UmbracoExamine.dll  0%  100%  
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         2         1         0         0         0         0
+   Files :        30        30         0         0         0         0
+   Bytes :   10.96 m   10.96 m         0         0         0         0
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+
+
+   Speed :            26494179 Bytes/sec.
+   Speed :            1516.009 MegaBytes/min.
+   Ended : Tuesday, December 30, 2014 12:30:07 PM
+

@@ -4,3 +4,9 @@ C:\Working Repositories\GitHub\Buzz.Hybrid\src\Buzz.Hybrid\obj\Release\Buzz.Hybr
 C:\Working Repositories\GitHub\Buzz.Hybrid\src\Buzz.Hybrid\obj\Release\Buzz.Hybrid.dll
 C:\Working Repositories\GitHub\Buzz.Hybrid\src\Buzz.Hybrid\obj\Release\Buzz.Hybrid.pdb
 C:\Working Repositories\GitHub\Buzz.Hybrid\build\Temp\bin\Buzz.Hybrid.dll.config
+C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\build\Temp\bin\Buzz.Hybrid.dll.config
+C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\build\Temp\bin\Buzz.Hybrid.dll
+C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\build\Temp\bin\Buzz.Hybrid.pdb
+C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\obj\Release\Buzz.Hybrid.csprojResolveAssemblyReference.cache
+C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\obj\Release\Buzz.Hybrid.dll
+C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\obj\Release\Buzz.Hybrid.pdb
