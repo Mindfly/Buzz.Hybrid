@@ -4,6 +4,7 @@
     using System.Web.Mvc;
     using Models;
     using Umbraco.Core.Logging;
+    using Umbraco.Core.Models;
     using Umbraco.Web.Models;
     using Umbraco.Web.Mvc;
 
@@ -63,8 +64,7 @@
         /// </summary>
         /// <typeparam name="T">The type of the view model</typeparam>
         /// <returns>An instantiated model of type T</returns>
-        protected virtual T GetModel<T>()
-            where T : BaseModel, new()
+        protected virtual T GetModel<T>() where T : class,  IPublishedContent, new()
         {            
             return new T();
         }

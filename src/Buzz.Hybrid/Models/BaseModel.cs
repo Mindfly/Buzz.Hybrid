@@ -3,21 +3,29 @@
     using System.Globalization;
     using System.Web;
     using System.Web.Mvc;
+
+    using Umbraco.Core.Models;
+    using Umbraco.Core.Models.PublishedContent;
     using Umbraco.Web;
     using Umbraco.Web.Models;
 
     /// <summary>
     /// Represents the BaseModel Class
     /// </summary>
-    public class BaseModel : RenderModel
+    /// <typeparam name="T">
+    /// </typeparam>
+    public class BaseModel<T> : PublishedContentWrapped where T : IPublishedContent
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseModel"/> class.
         /// </summary>
-        public BaseModel() 
+        public BaseModel()
             : base(UmbracoContext.Current.PublishedContentRequest.PublishedContent)
         {
         }
+
+        public BaseModel(T content) : base(content) { }
+
 
         /// <summary>
         /// Gets or sets the full url, including domain.
