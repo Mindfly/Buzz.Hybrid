@@ -1,7 +1,8 @@
 ﻿namespace Buzz.Hybrid.Events
 {
     using System;
-    using Models;
+
+    using Buzz.Hybrid.Models;
 
     /// <summary>
     /// The link tier event args.

@@ -2,7 +2,8 @@
 {
     using System;
     using System.Web;
-    using Models;
+
+    using Buzz.Hybrid.Models;
 
     /// <summary>
     /// Extension methods that require a current HttpContext

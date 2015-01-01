@@ -5,14 +5,16 @@
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
-    using Models;
+
+    using Buzz.Hybrid.Models;
+
     using Newtonsoft.Json;
     using Umbraco.Core.Models;
     using Umbraco.Web;
     using Umbraco.Web.Models;
 
     /// <summary>
-    /// Extension methods for BrambleBerry.Base models
+    /// Extension methods for Base models
     /// </summary>
     public static class ContentExtensions
     {

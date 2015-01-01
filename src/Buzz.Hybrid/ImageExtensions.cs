@@ -1,7 +1,9 @@
 ﻿namespace Buzz.Hybrid
 {
     using System.Diagnostics.CodeAnalysis;
-    using Models;
+
+    using Buzz.Hybrid.Models;
+
     using Umbraco.Core;
     using Umbraco.Web;
     using Umbraco.Web.Models;

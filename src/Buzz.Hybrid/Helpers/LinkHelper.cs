@@ -1,12 +1,13 @@
-﻿using Buzz.Hybrid.Events;
-
-namespace Buzz.Hybrid.Helpers
+﻿namespace Buzz.Hybrid.Helpers
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
-    using Models;
+
+    using Buzz.Hybrid.Events;
+    using Buzz.Hybrid.Models;
+
     using Umbraco.Core.Models;
     using Umbraco.Web;
 

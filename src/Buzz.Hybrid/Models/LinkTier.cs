@@ -12,7 +12,7 @@
         /// </summary>
         public LinkTier()
         {
-            Children = new List<ILinkTier>();
+            this.Children = new List<ILinkTier>();
         }
 
         /// <summary>

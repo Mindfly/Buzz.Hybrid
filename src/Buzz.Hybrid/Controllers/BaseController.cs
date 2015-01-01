@@ -2,7 +2,7 @@
 {
     using System.Web.Configuration;
     using System.Web.Mvc;
-    using Models;
+
     using Umbraco.Core.Logging;
     using Umbraco.Core.Models;
     using Umbraco.Web.Models;
@@ -12,7 +12,7 @@
     /// Represents the base surface controller
     /// </summary>
     [ExitHttpsIfNotRequiredAttribute]
-    public abstract class BaseSurfaceController : SurfaceController, IRenderMvcController
+    public abstract class BaseSurfaceController : SurfaceRenderMvcController
     {
         /// <summary>
         /// The disable exception tracking.
