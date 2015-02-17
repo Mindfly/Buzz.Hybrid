@@ -1,5 +1,7 @@
 ﻿namespace Buzz.Hybrid.Models
 {
+    using Umbraco.Core.Models;
+
     /// <summary>
     /// Defines a link
     /// </summary>
@@ -9,6 +11,11 @@
         /// Gets or sets Umbraco content id if applicable
         /// </summary>
         int ContentId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Umbraco content node, if applicable
+        /// </summary>
+        IPublishedContent ContentNode { get; set; }
 
         /// <summary>
         /// Gets or sets the content type alias.

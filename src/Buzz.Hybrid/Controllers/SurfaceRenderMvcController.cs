@@ -20,11 +20,13 @@
         protected bool EnsurePhsyicalViewExists(string template)
         {
             var result = ViewEngines.Engines.FindView(this.ControllerContext, template, null);
+
             if (result.View == null)
             {
                 LogHelper.Warn<SurfaceRenderMvcController>("No physical template file was found for template " + template);
                 return false;
             }
+
             return true;
         }
 
@@ -40,10 +42,12 @@
         protected ActionResult CurrentTemplate<T>(T model)
         {
             var template = this.ControllerContext.RouteData.Values["action"].ToString();
+
             if (!this.EnsurePhsyicalViewExists(template))
             {
                 return this.HttpNotFound();
             }
+
             return this.View(template, model);
         }
 

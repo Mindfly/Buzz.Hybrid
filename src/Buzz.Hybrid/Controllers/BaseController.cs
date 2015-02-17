@@ -78,16 +78,16 @@
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        protected bool EnsurePhysicalViewExists(string template)
-        {
-            var result = ViewEngines.Engines.FindView(ControllerContext, template, null);
+        //protected bool EnsurePhysicalViewExists(string template)
+        //{
+        //    var result = ViewEngines.Engines.FindView(ControllerContext, template, null);
             
-            if (result.View != null) return true;
+        //    if (result.View != null) return true;
+
+        //    LogHelper.Warn<BaseSurfaceController>("No physical template file was found for template " + template);
             
-            LogHelper.Warn<RenderMvcController>("No physical template file was found for template " + template);
-            
-            return false;
-        }
+        //    return false;
+        //}
 
         /// <summary>
         /// Returns an ActionResult based on the template name found in the route values and the given model.
@@ -98,17 +98,17 @@
         /// <remarks>
         /// If the template found in the route values doesn't physically exist, then an empty ContentResult will be returned.
         /// </remarks>
-        protected ActionResult CurrentTemplate<T>(T model)
-        {
-            var template = ControllerContext.RouteData.Values["action"].ToString();
+        //protected ActionResult CurrentTemplate<T>(T model)
+        //{
+        //    var template = ControllerContext.RouteData.Values["action"].ToString();
 
-            if (!EnsurePhysicalViewExists(template))
-            {
-                return Content(string.Empty);
-            }
+        //    if (!EnsurePhysicalViewExists(template))
+        //    {
+        //        return Content(string.Empty);
+        //    }
 
-            return View(template, model);
-        }       
+        //    return View(template, model);
+        //}       
 
         /// <summary>
         /// Overrides the OnException method
@@ -117,7 +117,7 @@
         protected override void OnException(ExceptionContext filterContext)
         {
             if (DisableExceptionTracking) return;
-            
+
             if (filterContext.ExceptionHandled)
             {
                 return;
@@ -125,7 +125,7 @@
 
             //// Log the exception.
             LogHelper.Error<BaseSurfaceController>(
-                "An unhandled exception occurred in the application",  
+                "An unhandled exception occurred in the application",
                 filterContext.Exception);
 
             //// Clear the cache if an error occurs.

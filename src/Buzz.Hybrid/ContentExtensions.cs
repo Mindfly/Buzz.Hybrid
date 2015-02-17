@@ -9,6 +9,8 @@
     using Buzz.Hybrid.Models;
 
     using Newtonsoft.Json;
+
+    using Umbraco.Core;
     using Umbraco.Core.Models;
     using Umbraco.Web;
     using Umbraco.Web.Models;
@@ -234,7 +236,7 @@
         /// <returns>
         /// The <see cref="int"/>.
         /// </returns>
-        public static int GetSafeIntenger(this RenderModel model, string propertyAlias)
+        public static int GetSafeInteger(this RenderModel model, string propertyAlias)
         {
             return model.Content.GetSafeInteger(propertyAlias);
         }
@@ -275,7 +277,9 @@
         /// </returns>
         public static int GetSafeInteger(this IPublishedContent content, string propertyAlias, int defaultValue)
         {
-            return content.WillWork(propertyAlias) ? content.GetPropertyValue<int>(propertyAlias) : defaultValue;
+            var WillWork = content.WillWork(propertyAlias);
+            var PropVal = content.GetPropertyValue<int>(propertyAlias);
+            return WillWork ? PropVal : defaultValue;
         }
 
         /// <summary>
@@ -729,6 +733,7 @@
 
             return isMedia ? umbraco.TypedMedia(ids) : umbraco.TypedContent(ids);
         }
+
 
         #endregion
 
