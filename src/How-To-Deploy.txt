@@ -1,0 +1,32 @@
+====================================================
+To Build a new nuget package
+====================================================
+1. Determine current version
+	- Major/minor based on code updates
+	- Patch based on referenced umbraco version: ex: Umbraco 7.2.5 = patch .725
+
+2. Update version info
+	- src\Build\Buzz.Version.props *Also update umbraco version here
+	?- src\Buzz.Hybrid\Configuration\BuzzHybridVersion.cs
+	- build\NuSpec\Buzz.Hybrid.nuspec
+
+3. Change configuration to "Release"
+
+4. Rebuild Solution
+
+5. Run file build\build.bat
+
+6. The package is saved to the "build\Temp\Artifacts\" folder.
+
+====================================================
+To install the new nuget package locally:
+====================================================
+
+1. In VS. Open the prject you want to update.
+2. Run this in the Package Manage Console - WITH THE NEW VERSION NUMBER ON THE END:
+
+TO INSTALL FRESH
+Install-Package Buzz.Hybrid -Source "C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\build\Temp\Artifacts\" -version 3.2.725
+
+TO UPDATE
+Update-Package Buzz.Hybrid -Source "C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\build\Temp\Artifacts\" -version 3.2.725

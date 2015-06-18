@@ -1,0 +1,79 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Thursday, May 21, 2015 2:04:41 PM
+   Source : C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\bin\
+     Dest : C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\App_Data\NuGetBackup\20150521-140440\bin\
+
+    Files : *.*
+	    
+  Options : *.* /S /E /DCOPY:DA /COPY:DAT /R:1000000 /W:30 
+
+------------------------------------------------------------------------------
+
+	                   0	C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\bin\
+	  New Dir         47	C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\bin\Debug\
+	    New File  		  114688	businesslogic.dll  0%  100%  
+	    New File  		  121944	businesslogic.xml  0%  100%  
+	    New File  		   38912	Buzz.Hybrid.dll  0%  100%  
+	    New File  		    1402	Buzz.Hybrid.dll.config  0%  100%  
+	    New File  		  116224	Buzz.Hybrid.pdb  0%  100%  
+	    New File  		  142848	ClientDependency.Core.dll  0%   91%  100%  
+	    New File  		   23552	ClientDependency.Core.Mvc.dll  0%  100%  
+	    New File  		   75264	ClientDependency.Core.Mvc.pdb  0%  100%  
+	    New File  		  372224	ClientDependency.Core.pdb  0%   35%   70%  100%  
+	    New File  		  516096	cms.dll  0%   25%   50%   76%  100%  
+	    New File  		  329469	cms.xml  0%   39%   79%  100%  
+	    New File  		   51712	controls.dll  0%  100%  
+	    New File  		    9068	controls.xml  0%  100%  
+	    New File  		   35840	DevTrends.MvcDonutCaching.dll  0%  100%  
+	    New File  		   95744	DevTrends.MvcDonutCaching.pdb  0%  100%  
+	    New File  		   54872	DevTrends.MvcDonutCaching.xml  0%  100%  
+	    New File  		   47104	ImageProcessor.Web.dll  0%  100%  
+	    New File  		   24576	interfaces.dll  0%  100%  
+	    New File  		   11197	interfaces.xml  0%  100%  
+	    New File  		  258048	log4net.dll  0%   50%  100%  
+	    New File  		   11264	Microsoft.ApplicationBlocks.Data.dll  0%  100%  
+	    New File  		   71016	Microsoft.Web.Helpers.dll  0%  100%  
+	    New File  		  504832	Newtonsoft.Json.dll  0%   25%   51%   77%  100%  
+	    New File  		  478769	Newtonsoft.Json.xml  0%   27%   54%   82%  100%  
+	    New File  		   19968	SQLCE4Umbraco.dll  0%  100%  
+	    New File  		  470240	System.Data.SqlServerCe.dll  0%   27%   55%   83%  100%  
+	    New File  		  240352	System.Data.SqlServerCe.Entity.dll  0%   54%  100%  
+	    New File  		  506976	System.Web.Mvc.dll  0%   25%   51%   77%  100%  
+	    New File  		  847872	System.Web.Mvc.xml  0%   30%   61%   92%  100%  
+	    New File  		  204400	System.Web.WebPages.dll  0%   64%  100%  
+	    New File  		  223301	System.Web.WebPages.xml  0%   58%  100%  
+	    New File  		  192512	TidyNet.dll  0%   68%  100%  
+	    New File  		   1.9 m	Umbraco.Core.dll  0%   12%   25%   38%   51%   64%   77%   90%  100%  
+	    New File  		   1.4 m	Umbraco.Core.xml  0%   17%   34%   52%   69%   87%  100%  
+	    New File  		   38912	umbraco.DataLayer.dll  0%  100%  
+	    New File  		  115002	umbraco.DataLayer.xml  0%  100%  
+	    New File  		   1.8 m	umbraco.dll  0%   13%   27%   40%   54%   67%   81%   94%  100%  
+	    New File  		  372736	umbraco.editorControls.dll  0%   35%   70%  100%  
+	    New File  		  170154	umbraco.editorControls.xml  0%   77%  100%  
+	    New File  		  131072	umbraco.MacroEngines.dll  0%  100%  
+	    New File  		    5678	umbraco.MacroEngines.xml  0%  100%  
+	    New File  		   37888	umbraco.providers.dll  0%  100%  
+	    New File  		   51453	umbraco.providers.xml  0%  100%  
+	    New File  		   57344	Umbraco.Web.UI.dll  0%  100%  
+	    New File  		   1.3 m	umbraco.xml  0%   18%   37%   56%   74%   93%  100%  
+	    New File  		   47616	UmbracoExamine.dll  0%  100%  
+	    New File  		   22528	UrlRewritingNet.UrlRewriter.dll  0%  100%  
+	  New Dir          0	C:\Users\Heather\NAS Folders\Active Projects\Webs\Mindfly\~Buzz.Hybrid\Buzz.Hybrid - Code\src\Buzz.Hybrid\bin\Release\
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         3         2         0         0         0         0
+   Files :        47        47         0         0         0         0
+   Bytes :   13.47 m   13.47 m         0         0         0         0
+   Times :   0:00:00   0:00:00                       0:00:00   0:00:00
+
+
+   Speed :            20326776 Bytes/sec.
+   Speed :            1163.107 MegaBytes/min.
+   Ended : Thursday, May 21, 2015 2:04:41 PM
+

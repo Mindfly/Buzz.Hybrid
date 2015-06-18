@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buzz.Hybrid", "Buzz.Hybrid\Buzz.Hybrid.csproj", "{1752EFD1-4B51-4A4D-94B3-97BF2E09BADF}"
 EndProject
@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{AA07FB39
 		..\tools\Buzz\Buzz.props = ..\tools\Buzz\Buzz.props
 		..\tools\Buzz\Buzz.targets = ..\tools\Buzz\Buzz.targets
 		..\build\Buzz.Version.props = ..\build\Buzz.Version.props
+		How-To-Deploy.txt = How-To-Deploy.txt
 	EndProjectSection
 EndProject
 Global

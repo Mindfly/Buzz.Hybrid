@@ -795,7 +795,14 @@
                 if (relatedLink.IsInternal)
                 {
                     var source = umbraco.TypedContent(relatedLink.Internal);
-                    rl.Url = source.Url;
+                    if (source != null)
+                    {
+                        rl.Url = source.Url;
+                    }
+                    else
+                    {
+                        rl.Url = "#";
+                    }
                 }
                 else
                 {
